@@ -15,12 +15,11 @@ public class Client {
 
             System.out.print("Enter a text: ");
             String text = scanner.nextLine();
-            System.out.print("Enter an index (0-9): ");
-            int index = scanner.nextInt();
-            out.println(text + ":" + index);
+
+            out.println(text);
 
             String response = in.readLine();
-            String[] parts = response.split(" ");
+            String[] parts = response.split(",");
             int receivedIndex = Integer.parseInt(parts[0]);
             String encryptedText = parts[1];
             int key = Integer.parseInt(parts[2]);
