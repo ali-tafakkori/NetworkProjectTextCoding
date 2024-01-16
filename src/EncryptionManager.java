@@ -27,5 +27,15 @@ public class EncryptionManager {
         int random = new Random().nextInt(numbers.size());
         return keys.get(random);
     }
-    
+
+    public String encrypt(int keyNumber, String text) {
+        int key = keys.get(keyNumber);
+        char[] result = text.toCharArray();
+
+        for (int i = 0; i < result.length; i++) {
+            result[i] = (char) (result[i] + key);
+        }
+
+        return new String(result);
+    }
 }
