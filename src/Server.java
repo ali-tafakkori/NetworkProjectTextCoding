@@ -1,7 +1,6 @@
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.Random;
 
 public class Server {
 
@@ -16,7 +15,7 @@ public class Server {
 
                 InputStream input = clientSocket.getInputStream();
                 OutputStream output = clientSocket.getOutputStream();
-                BufferedReader reader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+                BufferedReader reader = new BufferedReader(new InputStreamReader(input));
                 BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(output));
 
                 String data = reader.readLine();
