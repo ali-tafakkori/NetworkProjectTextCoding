@@ -6,7 +6,7 @@ public class Server {
 
     public static void main(String[] args) {
         try {
-            ServerSocket serverSocket = new ServerSocket(5000);
+            ServerSocket serverSocket = new ServerSocket(6000);
             System.out.println("Server is running and waiting for connections...");
 
             while (true) {
