@@ -28,14 +28,12 @@ public class EncryptionManager {
         return keys.get(random);
     }
 
-    public String encrypt(int keyNumber, String text) {
+    public byte[] encrypt(int keyNumber, String text) {
         int key = keys.get(keyNumber);
-        char[] result = text.toCharArray();
-
+        byte[] result = new byte[text.length()];
         for (int i = 0; i < result.length; i++) {
-            result[i] = (char) (result[i] + key);
+            result[i] = (byte) (text.charAt(i) + key);
         }
-
-        return new String(result);
+        return result;
     }
 }
