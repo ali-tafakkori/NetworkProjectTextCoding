@@ -23,7 +23,11 @@ public class Server {
                 System.out.println("Client data: " + data);
 
                 String text = data.toUpperCase();
-                int random = new Random().nextInt();
+                int keyNumber = EncryptionManager.getInstance().random();
+
+                byte[] encryptedData = EncryptionManager.getInstance().encrypt(keyNumber, text);
+
+                output.write(encryptedData, 0, encryptedData.length);
 
                 writer.flush();
                 clientSocket.close();
