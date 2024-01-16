@@ -1,6 +1,7 @@
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Random;
 
 public class Server {
 
@@ -15,17 +16,14 @@ public class Server {
 
                 InputStream input = clientSocket.getInputStream();
                 OutputStream output = clientSocket.getOutputStream();
+                BufferedReader reader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
                 BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(output));
 
-                StringBuilder data = new StringBuilder();
-                do {
-                    int c = input.read();
-                    data.append((char) c);
-                } while (input.available() > 0);
-
+                String data = reader.readLine();
                 System.out.println("Client data: " + data);
 
-                
+                String text = data.toUpperCase();
+                int random = new Random().nextInt();
 
                 writer.flush();
                 clientSocket.close();
