@@ -25,15 +25,23 @@ public class EncryptionManager {
     public int random() {
         Set<Integer> numbers = keys.keySet();
         int random = new Random().nextInt(numbers.size());
-        return keys.get(random);
+        return (int) numbers.toArray()[random];
     }
 
-    public byte[] encrypt(int keyNumber, String text) {
+    public String encrypt(int keyNumber, String text) {
         int key = keys.get(keyNumber);
-        byte[] result = new byte[text.length()];
+        char[] result = new char[text.length()];
         for (int i = 0; i < result.length; i++) {
-            result[i] = (byte) (text.charAt(i) + key);
+            result[i] = (char) (text.charAt(i) + key);
         }
-        return result;
+        return new String(result);
+    }
+    public String decrypt(int keyNumber, String encryptedData) {
+        int key = keys.get(keyNumber);
+        char[] result = new char[encryptedData.length()];
+        for (int i = 0; i < result.length; i++) {
+            result[i] = (char) (encryptedData.charAt(i) - key);
+        }
+        return new String(result);
     }
 }
